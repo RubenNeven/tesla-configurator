@@ -1,9 +1,10 @@
+<!--
 <h2>Step 2: Select your config and options</h2>
 
 <form class="row" [formGroup]="configForm">
   <div class="form-group">
     <label for="configSelect">Config</label>
-    <select class="form-control" id="configSelect" formControlName="config" (change)="onConfigChange()">
+    <select class="form-control" id="configSelect" formControlName="config">
       <option value="" selected>Choose...</option>
       <option *ngFor="let config of option?.configs" value="{{config.id}}">{{ config.description }}</option>
     </select>
@@ -30,3 +31,5 @@
 <div>
   <app-car-image></app-car-image>
 </div>
+-->
+<p>step two works</p>

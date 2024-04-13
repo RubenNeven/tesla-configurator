@@ -1,22 +1,39 @@
 <h2>Step 1: Choose your Model and color</h2>
 
-<form class="row" [formGroup]="modelForm">
-  <div class="form-group">
-    <label for="modelSelect">Model</label>
-    <select class="form-control" id="modelSelect" formControlName="model" (change)="onModelChange()">
-      <option value="" selected>Choose...</option>
-      <option *ngFor="let model of models" value="{{model.code}}">{{model.description}}</option>
-    </select>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <label class="form-label" for="modelSelect">Model</label>
+      <select
+        id="modelSelect"
+        [ngModel]="carService.selectedModelCode"
+        (ngModelChange)="onModelChange($event)"
+      >
+        <option value="">Choose...</option>
+        <option *ngFor="let opt of models" [value]="opt.code">
+          {{ opt.description }}
+        </option>
+      </select>
+    </div>
+    <div class="col">
+      <div class="mb-3" *ngIf="carService.selectedModelCode">
+        <label class="form-label" for="colorSelect">Color</label>
+        <select
+          id="colorSelect"
+          [ngModel]="carService.selectedColorCode"
+          (ngModelChange)="onColorChange($event)"
+        >
+          <option *ngFor="let color of colors" [value]="color.code">
+            {{ color.description }}
+          </option>
+        </select>
+      </div>
+    </div>
   </div>
-
-  <div class="form-group" *ngIf="carService.selectedModelCode">
-    <label for="colorSelect">Color</label>
-    <select class="form-control" id="colorSelect" formControlName="color" (change)="onColorChange()">
-      <option *ngFor="let color of colors" value="{{color.code}}">{{color.description}}</option>
-    </select>
+  <div class="row">
+    <app-car-image></app-car-image>
   </div>
-</form>
-<div>
-  <app-car-image></app-car-image>
 </div>
+
+
 
