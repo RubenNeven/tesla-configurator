@@ -1,0 +1,15 @@
+<div class="header-container">
+  <ul class="navbar">
+    <li><a routerLink="/one">
+      <button class="step-button" id="step1">Step 1</button>
+    </a></li>
+    <li><a routerLink="/two">
+      <button class="step-button" id="step2" [disabled]="!carService.isStepTwoEnabled()">Step 2</button>
+    </a></li>
+    <li><a routerLink="/three">
+      <button class="step-button" id="step3">Step 3</button>
+    </a></li>
+  </ul>
+</div>
+
+
