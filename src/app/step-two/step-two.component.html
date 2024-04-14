@@ -1,35 +1,53 @@
-<!--
 <h2>Step 2: Select your config and options</h2>
 
-<form class="row" [formGroup]="configForm">
-  <div class="form-group">
-    <label for="configSelect">Config</label>
-    <select class="form-control" id="configSelect" formControlName="config">
-      <option value="" selected>Choose...</option>
-      <option *ngFor="let config of option?.configs" value="{{config.id}}">{{ config.description }}</option>
-    </select>
-
-    <div *ngIf="config">
-      <h4>Range: {{ config.range }} miles - Max speed: {{ config.speed }} -
-        Cost: {{ config.price | currency : 'USD' }}</h4>
+<div class="container" *ngIf="option">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="configSelect" class="form-label">Config</label>
+      <select
+        id="configSelect"
+        [ngModel]="carService.selectedConfigCode"
+        (ngModelChange)="onSelectedCarConfigChange($event)"
+      >
+        <option value="">Choose...</option>
+        <option *ngFor="let configItem of this.configs" [value]="configItem.id">
+          {{ configItem.description }}
+        </option>
+      </select>
     </div>
   </div>
-
-  <div class="form-group row" *ngIf="this.option?.towHitch">
-    <div class="col-sm-12">
-      <label for="includeTow">Tow hitch?</label>
-      <input formControlName="towHitch" type="checkbox" id="includeTow"/>
+  <div class="row" *ngIf="carService.selectedConfig; let config">
+    <div class="col-md-6">
+      <h4>
+        Range: {{ config.range }} miles - Max speed: {{ config.speed }} - Cost: {{ config.price | currency : "USD" }}
+      </h4>
     </div>
   </div>
-  <div class=" form-group row" *ngIf="this.option?.yoke">
-    <div class="col-sm-12">
-      <label for="includeYoke">Yoke steering wheel?</label>
-      <input formControlName="yoke" type="checkbox" id="includeYoke"/>
+  <div class="row" *ngIf="option.yoke">
+    <div class="col-md-6">
+      <label for="includeYoke" class="form-label"
+      >Yoke steering wheel</label
+      >
+      <input
+        id="includeYoke"
+        type="checkbox"
+      />
     </div>
   </div>
-</form>
-<div>
-  <app-car-image></app-car-image>
+  <div class="row" *ngIf="option.towHitch">
+    <div class="col-md-6">
+      <label for="includeYoke" class="form-label"
+      >Yoke steering wheel</label
+      >
+      <input
+        id="includeTow"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <app-car-image></app-car-image>
+  </div>
 </div>
--->
-<p>step two works</p>
+
+

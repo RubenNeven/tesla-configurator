@@ -16,14 +16,21 @@ export class StepOneComponent implements OnInit {
   constructor(protected carService: CarService) {}
 
   onModelChange(modelCode: string) {
+
     this.carService.selectedModelCode = modelCode;
+    console.log(this.carService.selectedModelCode);
     this.carService.getCarColors(this.carService.selectedModelCode).subscribe((colors: Color[]) => {
       this.colors = colors;
       if (colors.length > 0) {
         this.carService.selectedColorCode = colors[0].code;
-        this.carService.setCarImage();
       }
+      this.carService.setCarImage();
+
     });
+    if (this.carService.selectedConfigCode){
+      this.carService.selectedConfigCode = undefined;
+      this.carService.selectedConfig = undefined;
+    }
   }
 
   onColorChange(colorCode: string){
