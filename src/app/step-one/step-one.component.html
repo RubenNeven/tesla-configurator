@@ -9,14 +9,14 @@
         [ngModel]="carService.selectedModelCode"
         (ngModelChange)="onModelChange($event)"
       >
-        <option value="">Choose...</option>
+        <option value="-1">Choose...</option>
         <option *ngFor="let opt of models" [value]="opt.code">
           {{ opt.description }}
         </option>
       </select>
     </div>
     <div class="col">
-      <div class="mb-3" *ngIf="carService.selectedModelCode">
+      <div class="mb-3" *ngIf="carService.selectedModelCode !== '-1'">
         <label class="form-label" for="colorSelect">Color</label>
         <select
           id="colorSelect"

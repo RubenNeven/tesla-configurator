@@ -9,7 +9,7 @@
         [ngModel]="carService.selectedConfigCode"
         (ngModelChange)="onSelectedCarConfigChange($event)"
       >
-        <option value="">Choose...</option>
+        <option value="-1">Choose...</option>
         <option *ngFor="let configItem of this.configs" [value]="configItem.id">
           {{ configItem.description }}
         </option>

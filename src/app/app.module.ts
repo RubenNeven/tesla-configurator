@@ -9,13 +9,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CarImageComponent} from "./car-image/car-image.component";
 import {StepTwoComponent} from "./step-two/step-two.component";
+import {StepThreeComponent} from "./step-three/step-three.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     StepOneComponent,
-    StepTwoComponent
+    StepTwoComponent,
+    StepThreeComponent
   ],
   imports: [
     BrowserModule,

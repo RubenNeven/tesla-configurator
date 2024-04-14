@@ -29,6 +29,14 @@ export class CarService {
     return this.http.get<Option>('/options/' + modelCode)
   }
 
+  getModelByCode(modelCode: string): Observable<Model | undefined>{
+    return this.getCarModels().pipe(
+      map((models: Model[]) => {
+        return models.find(model => model.code === modelCode);
+      })
+    );
+  }
+
   getCarColors(modelCode: string): Observable<Color[]> {
     return this.getCarModels().pipe(
       map((models: Model[]) => {
@@ -43,7 +51,7 @@ export class CarService {
   }
 
   setCarImage() {
-    if (!this.selectedModelCode){
+    if (this.selectedModelCode === "-1"){
       this.carImage = '';
     } else {
       this.carImage = `${this.CAR_IMAGE_URL}/${this.selectedModelCode}/${this.selectedColorCode}.jpg`;
@@ -51,6 +59,10 @@ export class CarService {
   }
 
   isStepTwoEnabled(): boolean {
-    return this.selectedModelCode !== undefined && this.selectedModelCode !== '' && this.selectedColorCode !== undefined;
+    return this.selectedModelCode !== undefined && this.selectedModelCode !== "-1" && this.selectedColorCode !== undefined;
+  }
+
+  isStepThreeEnabled(): boolean {
+    return this.selectedConfig !== undefined;
   }
 }

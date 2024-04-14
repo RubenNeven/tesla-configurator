@@ -16,9 +16,7 @@ export class StepOneComponent implements OnInit {
   constructor(protected carService: CarService) {}
 
   onModelChange(modelCode: string) {
-
     this.carService.selectedModelCode = modelCode;
-    console.log(this.carService.selectedModelCode);
     this.carService.getCarColors(this.carService.selectedModelCode).subscribe((colors: Color[]) => {
       this.colors = colors;
       if (colors.length > 0) {
@@ -39,6 +37,9 @@ export class StepOneComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.carService.selectedModelCode === undefined){
+      this.carService.selectedModelCode = "-1"
+    }
     if (this.carService.selectedModelCode){
       this.carService.getCarColors(this.carService.selectedModelCode).subscribe((colors: Color[]) => {
         this.colors = colors;
