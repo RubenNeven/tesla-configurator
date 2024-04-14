@@ -17,28 +17,10 @@ export class StepTwoComponent implements OnInit {
   constructor(protected carService: CarService) {}
 
   ngOnInit(): void {
-    if (this.carService.selectedConfigCode === undefined){
-      this.carService.selectedConfigCode = -1;
-    }
-    if (this.carService.selectedModelCode){
-      this.carService.getOption(this.carService.selectedModelCode).subscribe( (option: Option) => {
-        this.option = option;
-        this.configs = this.option.configs;
-      })
-    }
+    console.log(this.carService.selectedCar);
   }
 
   onSelectedCarConfigChange(configCode: string){
-    if (configCode === "-1"){
-      this.carService.selectedConfig = undefined;
-    }
-    this.carService.selectedConfigCode = parseInt(configCode);
-    if (this.configs){
-      for (let config of this.configs) {
-        if (this.carService.selectedConfigCode === config.id){
-          this.carService.selectedConfig = config;
-        }
-      }
-    }
+
   }
 }

@@ -6,29 +6,42 @@
       <label class="form-label" for="modelSelect">Model</label>
       <select
         id="modelSelect"
-        [ngModel]="carService.selectedModelCode"
+        [ngModel]="carService.selectedCar.selectedModel?.code"
         (ngModelChange)="onModelChange($event)"
       >
-        <option value="-1">Choose...</option>
-        <option *ngFor="let opt of models" [value]="opt.code">
-          {{ opt.description }}
+        <option *ngFor="let model of models" [value]="model.code">
+          {{ model.description }}
         </option>
       </select>
     </div>
-    <div class="col">
-      <div class="mb-3" *ngIf="carService.selectedModelCode !== '-1'">
+
+    <div class="col-md-6" *ngIf="carService.selectedCar.selectedModel?.code">
+      <label class="form-label" for="modelSelect">Model</label>
+      <select
+        id="colorSelect"
+        [ngModel]="carService.selectedCar.selectedColor?.code"
+        (ngModelChange)="onColorChange($event)"
+      >
+        <option *ngFor="let color of colors" [value]="color.code">
+          {{ color.description }}
+        </option>
+      </select>
+    </div>
+
+
+<!--    <div class="col">
+      <div class="col-md-6" *ngIf="carService.selectedCar.selectedModel?.code">
         <label class="form-label" for="colorSelect">Color</label>
         <select
           id="colorSelect"
-          [ngModel]="carService.selectedColorCode"
+          [ngModel]="carService.selectedCar.selectedColor?.code"
           (ngModelChange)="onColorChange($event)"
         >
-          <option *ngFor="let color of colors" [value]="color.code">
-            {{ color.description }}
+          <option *ngFor="let color of colors" [value]="color.code"> {{ color.description }}
           </option>
         </select>
       </div>
-    </div>
+    </div>-->
   </div>
   <div class="row">
     <app-car-image></app-car-image>

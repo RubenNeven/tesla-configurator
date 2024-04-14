@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CarService} from "../shared/services/car.service";
+import {CarService} from "../services/car.service";
 
 @Component({
   selector: 'app-header',

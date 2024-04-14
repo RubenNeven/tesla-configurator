@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {CarService} from "../shared/services/car.service";
+import {CarService} from "../services/car.service";
 
 @Component({
   selector: 'app-car-image',
@@ -13,6 +13,9 @@ import {CarService} from "../shared/services/car.service";
 })
 export class CarImageComponent {
 
+  CAR_IMAGE_URL: string = 'https://interstate21.com/tesla-app/images';
 
   constructor(protected carService: CarService) {}
+
+
 }

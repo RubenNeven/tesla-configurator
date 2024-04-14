@@ -1,0 +1,5 @@
+
+<div *ngIf="carService.selectedCar.selectedModel && carService.selectedCar.selectedColor">
+  <img [src]="CAR_IMAGE_URL + '/' + carService.selectedCar.selectedModel.code + '/' + carService.selectedCar.selectedColor.code + '.jpg'"
+       alt="{{carService.selectedCar.selectedColor.code}}">
+</div>

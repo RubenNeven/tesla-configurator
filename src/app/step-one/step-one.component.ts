@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CarService} from "../shared/services/car.service";
 import {Model} from "../shared/models/model";
 import {Color} from "../shared/models/color";
@@ -15,39 +15,31 @@ export class StepOneComponent implements OnInit {
 
   constructor(protected carService: CarService) {}
 
-  onModelChange(modelCode: string) {
-    this.carService.selectedModelCode = modelCode;
-    this.carService.getCarColors(this.carService.selectedModelCode).subscribe((colors: Color[]) => {
-      this.colors = colors;
-      if (colors.length > 0) {
-        this.carService.selectedColorCode = colors[0].code;
-      }
-      this.carService.setCarImage();
-
+  ngOnInit(): void {
+    this.carService.getCarModels().subscribe((models: Model[]) => {
+      this.models = models;
+      this.colors = this.getCarModelColors(this.carService.selectedCar.selectedModel?.code);
     });
-    if (this.carService.selectedConfigCode){
-      this.carService.selectedConfigCode = undefined;
-      this.carService.selectedConfig = undefined;
+  }
+
+  onModelChange(modelCode: string) {
+    this.carService.selectedCar.selectedModel = this.models.find(model => model.code === modelCode);
+    this.colors = this.getCarModelColors(this.carService.selectedCar.selectedModel?.code);
+    if (this.colors.length > 0) {
+      this.carService.selectedCar.selectedColor = this.colors[0];
     }
   }
 
   onColorChange(colorCode: string){
-    this.carService.selectedColorCode = colorCode;
-    this.carService.setCarImage();
+    this.carService.selectedCar.selectedColor = this.colors.find(color => color.code === colorCode);
   }
 
-  ngOnInit(): void {
-    if (this.carService.selectedModelCode === undefined){
-      this.carService.selectedModelCode = "-1"
+  getCarModelColors(modelCode: string | undefined): Color[]{
+    this.carService.selectedCar.selectedModel = this.models.find(model => model.code === modelCode);
+    if (this.carService.selectedCar.selectedModel) {
+      this.colors = this.carService.selectedCar.selectedModel.colors;
     }
-    if (this.carService.selectedModelCode){
-      this.carService.getCarColors(this.carService.selectedModelCode).subscribe((colors: Color[]) => {
-        this.colors = colors;
-      });
-    }
-    this.carService.getCarModels().subscribe((models: Model[]) => {
-      this.models = models;
-    });
+    return this.colors;
   }
 }
 
