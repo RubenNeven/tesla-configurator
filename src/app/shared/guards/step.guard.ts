@@ -10,13 +10,11 @@ export class StepGuard implements CanActivate {
   constructor(private carService: CarService, private router: Router) {}
 
   canActivate(): boolean {
-    const isStepTwoEnabled = this.carService.isStepTwoEnabled();
-
-    if (!isStepTwoEnabled) {
-      this.router.navigateByUrl('/one');
-      return false;
-    } else {
+    if (this.carService.isStepTwoEnabled() || this.carService.isStepThreeEnabled()) {
       return true;
+    } else {
+      this.router.navigate(['/model']);
+      return false;
     }
   }
 }

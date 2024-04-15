@@ -30,11 +30,9 @@ export class StepTwoComponent implements OnInit {
 
   onCheckYokeChange(checkYoke: boolean){
     this.carService.selectedCar.hasYoke = checkYoke;
-    console.log(this.carService.selectedCar);
   }
 
   onCheckTowHitchChange(checkTowHitch: boolean){
     this.carService.selectedCar.hasTowHitch = checkTowHitch;
-    console.log(this.carService.selectedCar);
   }
 }

@@ -29,20 +29,6 @@
       </select>
     </div>
 
-
-<!--    <div class="col">
-      <div class="col-md-6" *ngIf="carService.selectedCar.selectedModel?.code">
-        <label class="form-label" for="colorSelect">Color</label>
-        <select
-          id="colorSelect"
-          [ngModel]="carService.selectedCar.selectedColor?.code"
-          (ngModelChange)="onColorChange($event)"
-        >
-          <option *ngFor="let color of colors" [value]="color.code"> {{ color.description }}
-          </option>
-        </select>
-      </div>
-    </div>-->
   </div>
   <div class="row">
     <app-car-image></app-car-image>
