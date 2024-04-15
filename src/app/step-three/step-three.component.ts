@@ -13,23 +13,14 @@ export class StepThreeComponent implements OnInit {
   extraOptionPrice: number = 1000;
   totalCost: number = 0;
 
-  constructor(protected carService: CarService) {
-
-  }
+  constructor(protected carService: CarService) {}
 
   ngOnInit(): void {
-    if (this.carService.selectedCar.selectedConfig){
-      this.totalCost += this.carService.selectedCar.selectedConfig.price
-    }
-    if (this.carService.selectedCar.selectedColor){
-      this.totalCost += this.carService.selectedCar.selectedColor.price
-    }
-    if (this.carService.selectedCar.hasYoke){
-      this.totalCost += 1000;
-    }
-    if (this.carService.selectedCar.hasTowHitch){
-      this.totalCost += 1000;
+    if (this.carService.selectedCar) {
+      this.totalCost += this.carService.selectedCar.selectedConfig?.price || 0;
+      this.totalCost += this.carService.selectedCar.selectedColor?.price || 0;
+      this.totalCost += this.carService.selectedCar.hasYoke ? 1000 : 0;
+      this.totalCost += this.carService.selectedCar.hasTowHitch ? 1000 : 0;
     }
   }
-
 }
