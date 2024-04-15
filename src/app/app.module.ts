@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CarImageComponent} from "./shared/car-image/car-image.component";
 import {StepTwoComponent} from "./components/step-two/step-two.component";
 import {StepThreeComponent} from "./components/step-three/step-three.component";
+import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {StepThreeComponent} from "./components/step-three/step-three.component";
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent,
-    CarImageComponent
+    CarImageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
