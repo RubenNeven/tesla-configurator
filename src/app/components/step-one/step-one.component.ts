@@ -1,7 +1,7 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {CarService} from "../shared/services/car.service";
-import {Model} from "../shared/models/model";
-import {Color} from "../shared/models/color";
+import {CarService} from "../../shared/services/car.service";
+import {Model} from "../../shared/models/model";
+import {Color} from "../../shared/models/color";
 
 @Component({
   selector: 'app-step-one',

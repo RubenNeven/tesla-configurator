@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CarService} from "../shared/services/car.service";
-import {Model} from "../shared/models/model";
-import {Option} from "../shared/models/option";
+import {CarService} from "../../shared/services/car.service";
+import {Model} from "../../shared/models/model";
+import {Option} from "../../shared/models/option";
 
 @Component({
   selector: 'app-step-three',

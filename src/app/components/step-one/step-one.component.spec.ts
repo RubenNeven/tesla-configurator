@@ -1,11 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {StepOneComponent} from './step-one.component';
-import {AppModule} from "../app.module";
-import {CarService} from "../shared/services/car.service";
+import {AppModule} from "../../app.module";
+import {CarService} from "../../shared/services/car.service";
 import {of} from "rxjs";
-import {CAR_MODELS} from "../mock-data/car-models";
-import {SELECTED_CAR} from "../mock-data/selectedCar";
+import {CAR_MODELS} from "../../mock-data/car-models";
+import {SELECTED_CAR} from "../../mock-data/selectedCar";
 
 describe('StepOneComponent', () => {
   let component: StepOneComponent;

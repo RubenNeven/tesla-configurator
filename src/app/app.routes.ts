@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import {StepOneComponent} from "./step-one/step-one.component";
-import {StepTwoComponent} from "./step-two/step-two.component";
+import {StepOneComponent} from "./components/step-one/step-one.component";
+import {StepTwoComponent} from "./components/step-two/step-two.component";
 
 export const routes: Routes = [
   {path: '', component: StepOneComponent},

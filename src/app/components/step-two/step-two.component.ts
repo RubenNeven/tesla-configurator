@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {CarService} from "../shared/services/car.service";
-import {Option} from "../shared/models/option";
-import {Config} from "../shared/models/config";
+import {CarService} from "../../shared/services/car.service";
+import {Option} from "../../shared/models/option";
+import {Config} from "../../shared/models/config";
 
 @Component({
   selector: 'app-step-two',

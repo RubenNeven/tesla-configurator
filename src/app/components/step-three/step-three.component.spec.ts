@@ -1,10 +1,10 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {StepThreeComponent} from './step-three.component';
-import {AppModule} from "../app.module";
-import {CarService} from "../shared/services/car.service";
+import {AppModule} from "../../app.module";
+import {CarService} from "../../shared/services/car.service";
 import {StepOneComponent} from "../step-one/step-one.component";
-import {SELECTED_CAR} from "../mock-data/selectedCar";
+import {SELECTED_CAR} from "../../mock-data/selectedCar";
 
 describe('StepThreeComponent', () => {
   let component: StepThreeComponent;
