@@ -16,5 +16,4 @@ export class NavigateGuard implements CanActivate {
     }
     return true;
   }
-
 }
