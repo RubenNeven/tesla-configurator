@@ -6,9 +6,10 @@
       <label class="form-label" for="modelSelect">Model</label>
       <select
         id="modelSelect"
-        [ngModel]="carService.selectedCar.selectedModel?.code"
+        [ngModel]="carService.selectedCar.selectedModel?.code || 'choose'"
         (ngModelChange)="onModelChange($event)"
       >
+        <option selected value="choose">Choose...</option>
         <option *ngFor="let model of models" [value]="model.code">
           {{ model.description }}
         </option>

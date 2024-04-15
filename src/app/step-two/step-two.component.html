@@ -6,9 +6,10 @@
       <label for="configSelect" class="form-label">Config</label>
       <select
         id="configSelect"
-        [ngModel]="carService.selectedCar.selectedConfig?.id"
+        [ngModel]="carService.selectedCar.selectedConfig?.id || 'choose'"
         (ngModelChange)="onSelectedCarConfigChange($event)"
       >
+        <option selected value="choose">Choose...</option>
         <option *ngFor="let configItem of carService.selectedCar.selectedOption.configs" [value]="configItem.id">
           {{ configItem.description }}
         </option>
