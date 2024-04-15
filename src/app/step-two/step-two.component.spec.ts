@@ -6,12 +6,14 @@ import {CarService} from "../shared/services/car.service";
 import {of} from "rxjs";
 import {Option} from "../shared/models/option";
 import {SELECTED_CAR} from "../mock-data/selectedCar";
+import {OPTIONS} from "../mock-data/car-options";
 
 describe('StepTwoComponent', () => {
   let component: StepTwoComponent;
   let fixture: ComponentFixture<StepTwoComponent>;
   let carService: jasmine.SpyObj<CarService>;
-
+  const configCode = '1';
+  const mockOption: Option = OPTIONS.S;
 
   beforeEach(async () => {
     const carServiceSpy = jasmine.createSpyObj('CarService', ['getOption']);
@@ -43,20 +45,12 @@ describe('StepTwoComponent', () => {
   });
 
   it('should update selected configuration when valid config code is passed', () => {
-    const configCode = '1';
-    const mockOption: Option = {
-      configs: [
-        {id: 1, description: 'test 1', price: 1, range: 5, speed: 4},
-        {id: 2, description: 'test 2', price: 2, range: 5, speed: 4},
-      ],
-      towHitch: true,
-      yoke: false
-    };
+
     carService.selectedCar.carOption = mockOption;
 
     component.onSelectedCarConfigChange(configCode);
 
-    expect(carService.selectedCar.selectedConfig).toEqual({id: 1, description: 'test 1', price: 1, range: 5, speed: 4});
+    expect(carService.selectedCar.selectedConfig).toEqual({id: 1, description: 'Dual Motor All-Wheel Drive', price: 74990, range: 405, speed: 149});
   });
 
   it('should update hasYoke property in selectedCar', () => {
