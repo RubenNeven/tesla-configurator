@@ -1,22 +1,68 @@
-<!--
 <h2>Step 3: Summary</h2>
 
-<div class="container" *ngIf="model">
+
+<div class="container" *ngIf="carService.selectedCar.selectedModel">
   <div class="row">
     <div class="col-md-6">
-      <h3>Your Tesla {{ model.description }}</h3>
+      <h3>Your Tesla {{ carService.selectedCar.selectedModel.description }}</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <h4>{{ this.carService.selectedConfig?.description }}  {{ this.carService.selectedConfig?.price | currency : "USD"}}   </h4>
+      <p>{{ this.carService.selectedCar.selectedConfig?.description }}</p>
+    </div>
+    <div class="col-md-6">
+      <p>{{ this.carService.selectedCar.selectedConfig?.price | currency : "USD" }} </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <p>Range: {{ this.carService.selectedConfig?.range }} miles - Max-speed {{ this.carService.selectedConfig?.speed}}   </p>
+      <p>Range: {{ this.carService.selectedCar.selectedConfig?.range }} miles -
+        Max-speed {{ this.carService.selectedCar.selectedConfig?.speed }} </p>
     </div>
   </div>
+
+  <div class="row" *ngIf="this.carService.selectedCar.selectedColor?.price">
+    <div class="col-md-6" >
+      <p>{{ this.carService.selectedCar.selectedColor?.description }} </p>
+    </div>
+
+    <div class="col-md-6" >
+      <p>{{ this.carService.selectedCar.selectedColor?.price | currency: "USD" }} </p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="this.carService.selectedCar.hasYoke">
+    <div class="col-md-6" >
+      <p> Yoke Package </p>
+    </div>
+    <div class="col-md-6" >
+      <p> {{ extraOptionPrice | currency : "USD" }} </p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="this.carService.selectedCar.hasTowHitch">
+    <div class="col-md-6" >
+      <p> Tow Hitch Package </p>
+    </div>
+    <div class="col-md-6">
+      <p> {{ extraOptionPrice | currency : "USD" }} </p>
+    </div>
+  </div>
+
+  <hr>
+
+
+  <div class="row">
+    <div class="col-md-6" >
+      <p> Total cost </p>
+    </div>
+    <div class="col-md-6">
+      <p> {{ totalCost | currency : "USD" }} </p>
+    </div>
+  </div>
+
+  <hr>
 
   <div class="row">
     <app-car-image></app-car-image>
@@ -24,4 +70,3 @@
 </div>
 
 
--->

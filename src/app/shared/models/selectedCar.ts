@@ -6,6 +6,8 @@ import {Option} from "./option";
 export class SelectedCar {
   selectedModel: Model | undefined;
   selectedColor: Color | undefined;
-  selectedOption: Option | undefined;
+  carOption: Option | undefined;
   selectedConfig: Config | undefined;
+  hasTowHitch: boolean | undefined;
+  hasYoke: boolean | undefined;
 }

@@ -1,6 +1,6 @@
 <h2>Step 2: Select your config and options</h2>
 
-<div class="container" *ngIf="carService.selectedCar.selectedOption">
+<div class="container" *ngIf="carService.selectedCar.carOption">
   <div class="row">
     <div class="col-md-6">
       <label for="configSelect" class="form-label">Config</label>
@@ -10,7 +10,7 @@
         (ngModelChange)="onSelectedCarConfigChange($event)"
       >
         <option selected value="choose">Choose...</option>
-        <option *ngFor="let configItem of carService.selectedCar.selectedOption.configs" [value]="configItem.id">
+        <option *ngFor="let configItem of carService.selectedCar.carOption.configs" [value]="configItem.id">
           {{ configItem.description }}
         </option>
       </select>
@@ -23,23 +23,28 @@
       </h4>
     </div>
   </div>
-  <div class="row" *ngIf="carService.selectedCar.selectedOption.yoke">
+  <div class="row" *ngIf="carService.selectedCar.carOption.yoke">
     <div class="col-md-6">
       <label for="includeYoke" class="form-label"
       >Yoke steering wheel</label
       >
       <input
+        [ngModel]="carService.selectedCar.hasYoke"
+        (ngModelChange)="onCheckYokeChange($event)"
+
         id="includeYoke"
         type="checkbox"
       />
     </div>
   </div>
-  <div class="row" *ngIf="carService.selectedCar.selectedOption.towHitch">
+  <div class="row" *ngIf="carService.selectedCar.carOption.towHitch">
     <div class="col-md-6">
       <label for="includeYoke" class="form-label"
-      >Yoke steering wheel</label
+      >Tow hitch</label
       >
       <input
+        [ngModel]="carService.selectedCar.hasTowHitch"
+        (ngModelChange)="onCheckTowHitchChange($event)"
         id="includeTow"
         type="checkbox"
       />

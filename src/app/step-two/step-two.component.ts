@@ -17,16 +17,24 @@ export class StepTwoComponent implements OnInit {
   ngOnInit(): void {
     if (this.carService.selectedCar.selectedModel !== undefined){
       this.carService.getOption(this.carService.selectedCar.selectedModel.code).subscribe((option: Option) => {
-        this.carService.selectedCar.selectedOption = option;
-        console.log(this.carService.selectedCar.selectedOption);
+        this.carService.selectedCar.carOption = option;
       })
     }
   }
 
   onSelectedCarConfigChange(configCode: string){
-    if (this.carService.selectedCar.selectedOption){
-      this.carService.selectedCar.selectedConfig = this.carService.selectedCar.selectedOption.configs.find(config => config.id === parseInt(configCode));
-      console.log(this.carService.selectedCar.selectedConfig);
+    if (this.carService.selectedCar.carOption){
+      this.carService.selectedCar.selectedConfig = this.carService.selectedCar.carOption.configs.find(config => config.id === parseInt(configCode));
     }
+  }
+
+  onCheckYokeChange(checkYoke: boolean){
+    this.carService.selectedCar.hasYoke = checkYoke;
+    console.log(this.carService.selectedCar);
+  }
+
+  onCheckTowHitchChange(checkTowHitch: boolean){
+    this.carService.selectedCar.hasTowHitch = checkTowHitch;
+    console.log(this.carService.selectedCar);
   }
 }

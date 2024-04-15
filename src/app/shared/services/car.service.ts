@@ -29,4 +29,8 @@ export class CarService {
     return this.selectedCar.selectedModel?.code !== undefined && this.selectedCar.selectedColor?.code !== undefined;
   }
 
+  isStepThreeEnabled(): boolean {
+    return this.selectedCar.selectedConfig?.id !== undefined;
+  }
+
 }
