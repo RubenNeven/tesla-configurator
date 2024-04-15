@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CarService} from "../../shared/services/car.service";
 import {Model} from "../../shared/models/model";
 import {Color} from "../../shared/models/color";
@@ -22,7 +22,7 @@ export class StepOneComponent implements OnInit {
     });
   }
 
-  onModelChange(modelCode: string) {
+  onModelChange(modelCode: string): void {
     this.carService.selectedCar.selectedModel = this.models.find(model => model.code === modelCode);
     this.colors = this.getCarModelColors(this.carService.selectedCar.selectedModel?.code);
     if (this.colors.length > 0) {
@@ -33,7 +33,7 @@ export class StepOneComponent implements OnInit {
     this.carService.selectedCar.hasYoke = undefined;
   }
 
-  onColorChange(colorCode: string){
+  onColorChange(colorCode: string): void{
     this.carService.selectedCar.selectedColor = this.colors.find(color => color.code === colorCode);
   }
 

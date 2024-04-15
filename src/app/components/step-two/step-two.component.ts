@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
 import {CarService} from "../../shared/services/car.service";
 import {Option} from "../../shared/models/option";
-import {Config} from "../../shared/models/config";
 
 @Component({
   selector: 'app-step-two',
@@ -22,17 +20,17 @@ export class StepTwoComponent implements OnInit {
     }
   }
 
-  onSelectedCarConfigChange(configCode: string){
+  onSelectedCarConfigChange(configCode: string): void{
     if (this.carService.selectedCar.carOption){
       this.carService.selectedCar.selectedConfig = this.carService.selectedCar.carOption.configs.find(config => config.id === parseInt(configCode));
     }
   }
 
-  onCheckYokeChange(checkYoke: boolean){
+  onCheckYokeChange(checkYoke: boolean): void{
     this.carService.selectedCar.hasYoke = checkYoke;
   }
 
-  onCheckTowHitchChange(checkTowHitch: boolean){
+  onCheckTowHitchChange(checkTowHitch: boolean): void{
     this.carService.selectedCar.hasTowHitch = checkTowHitch;
   }
 }
