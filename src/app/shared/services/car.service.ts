@@ -21,6 +21,10 @@ export class CarService {
     return this.http.get<Model[]>(`/models`);
   }
 
+  getOption(modelCode: string): Observable<Option> {
+    return this.http.get<Option>(`/options/` + modelCode);
+  }
+
   isStepTwoEnabled(): boolean {
     return this.selectedCar.selectedModel?.code !== undefined && this.selectedCar.selectedColor?.code !== undefined;
   }

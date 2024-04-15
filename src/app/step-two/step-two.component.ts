@@ -11,16 +11,22 @@ import {Config} from "../shared/models/config";
 })
 export class StepTwoComponent implements OnInit {
 
-  option: Option | undefined;
-  configs: Config[] | undefined;
 
   constructor(protected carService: CarService) {}
 
   ngOnInit(): void {
-    console.log(this.carService.selectedCar);
+    if (this.carService.selectedCar.selectedModel !== undefined){
+      this.carService.getOption(this.carService.selectedCar.selectedModel.code).subscribe((option: Option) => {
+        this.carService.selectedCar.selectedOption = option;
+        console.log(this.carService.selectedCar.selectedOption);
+      })
+    }
   }
 
   onSelectedCarConfigChange(configCode: string){
-
+    if (this.carService.selectedCar.selectedOption){
+      this.carService.selectedCar.selectedConfig = this.carService.selectedCar.selectedOption.configs.find(config => config.id === parseInt(configCode));
+      console.log(this.carService.selectedCar.selectedConfig);
+    }
   }
 }

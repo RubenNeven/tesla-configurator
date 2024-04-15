@@ -28,6 +28,7 @@ export class StepOneComponent implements OnInit {
     if (this.colors.length > 0) {
       this.carService.selectedCar.selectedColor = this.colors[0];
     }
+    this.carService.selectedCar.selectedConfig = undefined;
   }
 
   onColorChange(colorCode: string){
