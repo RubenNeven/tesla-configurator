@@ -10,7 +10,7 @@ export const routes: Routes = [
   {path: '', redirectTo: '/model', pathMatch: 'full'},
   {path: 'model', component: StepOneComponent},
   {path: 'config', component: StepTwoComponent, canActivate: [StepGuard]},
-  {path: 'three', component: StepThreeComponent, canActivate: [StepGuard]},
+  {path: 'summary', component: StepThreeComponent, canActivate: [StepGuard]},
 ];
 
 @NgModule({
