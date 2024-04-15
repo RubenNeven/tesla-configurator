@@ -4,10 +4,6 @@ import {CarService} from "../services/car.service";
 
 @Component({
   selector: 'app-car-image',
-  standalone: true,
-    imports: [
-        NgIf
-    ],
   templateUrl: './car-image.component.html',
   styleUrl: './car-image.component.scss'
 })

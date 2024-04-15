@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import {AppModule} from "../../app.module";
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,10 +9,10 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent]
+      imports: [AppModule]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +20,11 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+
+  it('testing html element', () => {
+    const element = fixture.nativeElement.querySelector('.step-button');
+    expect(element.textContent.trim()).toEqual('Step 1');
   });
 });

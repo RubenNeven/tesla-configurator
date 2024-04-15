@@ -17,15 +17,15 @@ import {StepThreeComponent} from "./step-three/step-three.component";
     HeaderComponent,
     StepOneComponent,
     StepTwoComponent,
-    StepThreeComponent
+    StepThreeComponent,
+    CarImageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
-    CarImageComponent
+    FormsModule
   ],
   providers: [CarService],
   bootstrap: [AppComponent]
