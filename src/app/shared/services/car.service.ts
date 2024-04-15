@@ -14,7 +14,6 @@ export class CarService {
 
   selectedCar: SelectedCar = new SelectedCar();
 
-
   constructor(private http: HttpClient) {}
 
   getCarModels(): Observable<Model[]> {
